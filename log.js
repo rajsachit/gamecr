@@ -15,3 +15,8 @@
         signupBtn.click();
         return false;
       });
+// This will prevent the user from going back to the previous page
+window.history.pushState(null, null, window.location.href);
+window.onpopstate = function () {
+    window.location.href = "index.html"; // Redirect to index.html when back button is clicked
+};
