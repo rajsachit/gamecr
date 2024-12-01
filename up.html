@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Update Password</title>
+  <link rel="stylesheet" href="log.css">
+  <style>
+    /* Basic styling for the Update Password form */
+    #message {
+      margin-top: 15px;
+      font-size: 14px;
+      text-align: center;
+    }
+    .field input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .btn input {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .btn input:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    <div class="title-text">
+      <div class="title">Update Password</div>
+    </div>
+    <div class="form-container">
+      <div class="form-inner">
+        <!-- Update Password Form -->
+        <form action="#" class="update-password" id="updatePasswordForm">
+          <!-- New Password field -->
+          <div class="field">
+            <input type="password" id="newPassword" placeholder="New Password" required>
+          </div>
+          
+          <!-- Confirm Password field -->
+          <div class="field">
+            <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+          </div>
+
+          <!-- Update Password button -->
+          <div class="field btn">
+            <div class="btn-layer"></div>
+            <input type="submit" value="Update Password">
+          </div>
+
+          <!-- Success/Failure Message -->
+          <div id="message" style="display: none;"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Wait for the document to fully load
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.getElementById('updatePasswordForm');
+      const messageDiv = document.getElementById('message');
+      
+      form.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form from submitting normally
+        
+        // Get the values of the new password and confirm password fields
+        const newPassword = document.getElementById('newPassword').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+        
+        // Simple validation
+        if (newPassword && confirmPassword) {
+          if (newPassword === confirmPassword) {
+            // Simulate successful password update and show a success message
+            messageDiv.style.display = 'block';
+            messageDiv.style.color = 'green';
+            messageDiv.innerHTML = 'Your password has been updated successfully.';
+
+            // Redirect to the login page after 2 seconds
+            setTimeout(function() {
+              window.location.href = 'login.html'; // Change 'login.html' to your actual login page URL
+            }, 2000);
+          } else {
+            // Show an error message if passwords do not match
+            messageDiv.style.display = 'block';
+            messageDiv.style.color = 'red';
+            messageDiv.innerHTML = 'Passwords do not match. Please try again.';
+          }
+        } else {
+          // Show an error message if any fields are missing
+          messageDiv.style.display = 'block';
+          messageDiv.style.color = 'red';
+          messageDiv.innerHTML = 'Please fill in both password fields.';
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

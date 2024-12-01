@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Forgot Password</title>
+  <link rel="stylesheet" href="log.css">
+  <style>
+    /* Style for the message below the reset button */
+    #message {
+      margin-top: 15px;
+      font-size: 14px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    <div class="title-text">
+      <div class="title forgot-password">Forgot Password</div>
+    </div>
+    <div class="form-container">
+      <div class="form-inner">
+        <!-- Forgot Password Form -->
+        <form action="#" class="forgot-password" id="forgotPasswordForm">
+          <!-- Email Address field -->
+          <div class="field">
+            <input type="email" id="email" placeholder="Email Address" required>
+          </div>
+          
+          <!-- Mobile Number field -->
+          <div class="field">
+            <input type="tel" id="mobile" placeholder="Mobile Number" required>
+          </div>
+
+          <!-- Send Reset Link button -->
+          <div class="field btn">
+            <div class="btn-layer"></div>
+            <input type="submit" value="Reset ">
+          </div>
+
+          <!-- Success/Failure Message -->
+          <div id="message" style="display: none;"></div>
+
+          <!-- Link to Login if user remembers password -->
+          <div class="signup-link"> <a href="login.html">« Back to login</a></div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Wait for the document to fully load
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.getElementById('forgotPasswordForm');
+      const messageDiv = document.getElementById('message');
+      
+      form.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form from submitting normally
+        
+        // Get the values of the email and mobile fields
+        const email = document.getElementById('email').value;
+        const mobile = document.getElementById('mobile').value;
+        
+        // Simple validation
+        if (email && mobile) {
+          // Simulate sending the reset link and show a success message
+          messageDiv.style.display = 'block';
+          messageDiv.style.color = 'green';
+          messageDiv.innerHTML = 'A password reset link has been sent to your email.';
+        } else {
+          // Show an error message if fields are missing
+          messageDiv.style.display = 'block';
+          messageDiv.style.color = 'red';
+          messageDiv.innerHTML = 'Please enter both email and mobile number.';
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
